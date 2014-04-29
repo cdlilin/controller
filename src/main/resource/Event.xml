@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+	<event name="trainlineEvent" parameter="userparam" startAction="trainlinesAction" result="${userparam}" routingKey="crec.reply.trainlineEvent" amqpTemp="replyTemplate">
+	    <action  type="rest"  name="trainlinesAction" url="http://10.1.191.135:7003/rail/plan/Trainlines" method="post" parameter="${userparam}" resultKey="resultTrainlines" description="生成客运运行线">
+	     	<validate next="trainlineNoticeAction">
+	          <operation type="eq" value="201" paramName="code"/>
+	       </validate> 
+	    </action> 
+	    <action  type="rabbitmq"  name="trainlineNoticeAction"  parameter="${userparam}" resultKey="trainlineNotice" description="更新运行线" routingKey="crec.update.trainlineNotice" amqpTemp="replyTemplate">
+	     	<validate next="END">
+	          <operation type="eq" value="0" paramName="code"/>
+	       </validate> 
+	    </action> 
+	 </event>
+	 <event name="constructionsEvent" parameter="userparam" startAction="constructionsAction" result="${userparam}" amqpTemp="replyTemplate">
+	    <action  type="rest"  name="constructionsAction"  url="http://10.1.191.135:7003/rail/plan/Constructions" method="post" parameter="${userparam}" resultKey="constructionResult" description="根据给定的施工计划id生成/调整日计划施工">
+	     	<validate next="END">
+	          <operation type="eq" value="201" paramName="code"/>
+	       </validate> 
+	    </action> 
+	 </event>
+	 <event name="createFreightTransportEvent" parameter="userparam" startAction="freightTransportAction" result="${resultFreightTransport}" routingKey="crec.reply.createFreightTransportEvent" amqpTemp="replyTemplate">
+	    <action  type="rest"  name="freightTransportAction" url="http://10.1.191.135:7003/rail/plan/Trainlines" method="post" parameter="${userparam}" resultKey="resultFreightTransport" description="生成货运运行线">
+	     	<validate next="noticeAction">
+	          <operation type="eq" value="201" paramName="code"/>
+	       </validate> 
+	    </action> 
+	    <action  type="rabbitmq"  name="noticeAction"  parameter="${userparam}" resultKey="trainlineNotice" description="更新运行线" routingKey="crec.update.notice" amqpTemp="replyTemplate">
+	     	<validate next="END">
+	          <operation type="eq" value="0" paramName="code"/>
+	       </validate> 
+	    </action> 
+	 </event>
+ </events>
+ 
+ 

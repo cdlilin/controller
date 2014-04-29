@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>核查编制图定开行</title>
+<!-- Bootstrap core CSS -->
+<link href="../../assets/css/custom-bootstrap.css" rel="stylesheet">
+<!--font-awesome-->
+<link href="../../assets/css/datepicker.css" rel="stylesheet">
+<link  type="text/css" rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
+<link  type="text/css" rel="stylesheet" href="../../assets/css/datepicker.css">
+<!-- Custom styles for this template -->
+<link href="../../assets/css/style.css" rel="stylesheet">
+<script src="../../assets/js/jquery.js"></script>
+<script src="../../assets/js/html5.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/respond.min.js"></script>
+<script src="../../assets/js/jquery.dataTables.js"></script>
+
+
+</head>
+<body class="Iframe_body">
+<!--以上为必须要的-->
+
+<ol class="breadcrumb">
+  <span><i class="fa fa-anchor"></i>当前位置：</span>
+  <li><a href="#">核查编制图定开行</a></li>
+</ol>
+
+
+<!--分栏框开始-->
+<div class="row">
+	<div class="panel panel-default">
+      <!--panle-heading-->
+        <div class="panel-body">
+        	<div class="row" style="margin:-5px 0 10px 0;">
+		      <form class="form-horizontal" role="form">
+		        <button class="btn btn-primary" type="button" id="plan_review_btnQuery_ljtjxx">搜索</button>
+		        <a type="button" class="btn btn-success" data-toggle="modal" data-target="#" id="plan_review_btn_createRunLine"><i class="fa fa-plus"></i>审核</a>
+		        <div class="pull-left">
+		          <div class="form-group" style="float:left;margin-left:20px;margin-bottom:0;">
+		          	<label for="exampleInputEmail3" class="control-label pull-left"> 路局：&nbsp;</label>
+		            <div class="pull-left">
+                    	<select id="plan_review_select_lj" class="form-control">
+				         </select>
+				    </div>
+		            <label for="exampleInputEmail2" class="control-label pull-left">&nbsp;&nbsp;&nbsp;日期:&nbsp;</label>
+		            <div class="pull-left">
+		              <input type="text" class="form-control" style="width:150px;" placeholder="" id="plan_review_selectdate">
+		            </div>
+		          </div>
+		        </div>
+		        <!--col-md-3 col-sm-4 col-xs-4-->
+		      </form>
+		    </div>
+		    <div class="table-responsive">
+		      <table class="table table-bordered table-striped table-hover" id="plan_review_table_ljtjxx">
+		        <thead>
+		          <tr>
+		            <th rowspan="2"><div style="text-align:center;margin:-5px 0 10px 0;">合计</div></th>
+		            <th colspan="3"><div style="text-align:center;">图定始发</div></th>
+		            <th colspan="3"><div style="text-align:center;">图定接入</div></th>
+		            <th colspan="3"><div style="text-align:center;">临客始发</div></th>
+		            <th colspan="3"><div style="text-align:center;">临客接入</div></th>
+		            <th rowspan="2"><div style="text-align:center;margin:-5px 0 10px 0;">审核状态</div></th>
+		            <th rowspan="2"><div style="text-align:center;margin:-5px 0 10px 0;">运行线</div></th>
+		          </tr>
+		          <tr>
+		            <th>小计</th>
+		            <th>交出</th>
+		            <th>终到</th>
+		            <th>小计</th>
+		            <th>交出</th>
+		            <th>终到</th>
+		            <th>小计</th>
+		            <th>交出</th>
+		            <th>终到</th>
+		            <th>小计</th>
+		            <th>交出</th>
+		            <th>终到</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <tr>
+		            <td>300</td>
+		            <td>200</td>
+		            <td>100</td>
+		            <td>200</td>
+		            <td>0</td>
+		            <td>0</td>
+		            <td>0</td>
+		            <td>200</td>
+		            <td>100</td>
+		            <td>200</td>
+		            <td>0</td>
+		            <td>0</td>
+		            <td>0</td>
+		            <td>未审核</td>
+		            <td>未生成</td>
+		          </tr>
+		        </tbody>
+		      </table>
+		    </div>
+		  </div>
+      <!--panel panel-default--> 
+    </div>
+</div>
+
+
+
+<!--分栏框开始-->
+<div class="row">
+  <div style="margin-right:-490px; float:left; width:100%;">
+    <!--分栏框开始-->
+    <div class="panel panel-default"  style="margin-right:490px;">
+      <div class="panel-heading">
+        <h3 class="panel-title" style="float: left;"> <i class="fa fa-file-text-o"></i>列车开行计划详情</h3>
+      </div>
+      
+      
+      <!--panle-heading-->
+      <div class="panel-body">
+      	<div class="row" style="margin:-5px 0 10px 0;">
+	      <form class="form-horizontal" role="form">
+	        <button class="btn btn-primary" type="button" id="plan_review_btnQuery2">搜索</button>
+	        <div class="pull-left">
+	          <div class="form-group" style="float:left;margin-left:20px;margin-bottom:0;">
+	            <div class="pull-left">
+	              <input type="text" class="form-control" style="width:180px;" placeholder="输入车次查询" id="plan_review_input_trainNbr">
+	            </div>
+	          </div>
+	        </div>
+	        <!--col-md-3 col-sm-4 col-xs-4-->
+	      </form>
+	    </div>
+        <div class="table-responsive" >
+          <table class="table table-bordered table-striped table-hover" id="plan_review_table_trainInfo">
+		        <thead>
+		          <tr>
+		            <th rowspan="2" style="width:40px"><div style="text-align:center;margin:-5px 0 10px 0;">序号</div></th>
+		            <th rowspan="2" style="width:90px"><div style="text-align:center;margin:-5px 0 10px 0;">车次</div></th>
+		            <th colspan="3"><div style="text-align:center;">始发</div></th>
+		            <th colspan="3"><div style="text-align:center;">终到</div></th>
+		            <th rowspan="2" style="width:90px"><div style="text-align:center;margin:-5px 0 10px 0;">所属交路</div></th>
+		          </tr>
+		          <tr>
+		            <th>站名</th>
+		            <th style="width:30px">局</th>
+		            <th>时间</th>
+		            <th>站名</th>
+		            <th style="width:30px">局</th>
+		            <th>时间</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <tr>
+		            <td>1</td>
+		            <td>K817</td>
+		            <td>北京西</td>
+		            <td>北京局</td>
+		            <td>08:35</td>
+		            <td>成都</td>
+		            <td>成都局</td>
+		            <td>12:30</td>
+		            <td>1232140986</td>
+		          </tr>
+		        </tbody>
+		      </table>
+        </div>
+        <div class="pull-left" style="line-height:34px;">第1-5条记录/共<label id="plan_review_paging_total"></label>条记录</div>
+        <ul class="pagination pull-right" style="margin:0px;">
+          
+          <li class="disabled"><a href="#">«</a></li>
+          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">»</a></li>
+        </ul>
+        
+        
+        
+        
+      </div>
+      <!--panel-body--> 
+    </div>
+    <!--分栏框结束--> 
+    <!--分栏框开始-->
+    <!--分栏框结束--> 
+  </div>
+  
+  
+  <div class="pull-right" style="width:480px;"> 
+    <!--分栏框开始-->
+    <div id="plan_view_div_palnDayDetail" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title" style="float: left;"> <i class="fa fa fa-folder-open"></i>客运时刻表&nbsp;&nbsp;<label id="plan_view_div_palnDayDetail_title"></label></h3>
+      </div>
+      <!--panle-heading-->
+      <div class="panel-body" style="padding:10px;">
+      	<div class="table-responsive" >
+          <table class="table table-bordered table-striped table-hover"  id="plan_review_table_trainDetail">
+            <thead>
+              <tr>
+		        <th style="width:25px">序号</th>
+                <th>站名</th>
+                <th style="width:50px">到达时间</th>
+                <th style="width:50px">出发时间</th>
+                <th style="width:50px">停留时间</th>
+                <th style="width:25px">股道</th>
+                <th style="width:25px">天数</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!--panel-body--> 
+    </div>
+    <!--分栏框结束--> 
+  </div>
+  <!--分栏框结束--> 
+</div>
+
+<script src="../../assets/js/datepicker.js"></script>
+<script src="../../js/plan/plan_review.js"></script>
+</body>
+</html>
